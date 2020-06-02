@@ -65,6 +65,12 @@ public class StringCalculatorTest {
         assertEquals(calculator.add("//,\n1,2000,3,4"), 8);
         assertEquals(calculator.add("//;\n1;12;3000;4"), 17);
     }
+    
+    @Test
+    public void VariableLengthDeliminatorInsideSquareBracket() {
+        assertEquals(calculator.add("//[,,,]\n1,,,2,,,3,,,4"), 10);
+        assertEquals(calculator.add("//[..]\n1..2..3..4"),10);
+    }
 
 
 }

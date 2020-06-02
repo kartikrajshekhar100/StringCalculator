@@ -25,6 +25,15 @@ public class StringCalculator {
     private static String[] manupulate(String input) {
    
         if(input.startsWith("//")) {
+        	
+        	if(input.startsWith("//["))
+        	{
+        		int ClosingBracketIndex=input.indexOf(']');
+        		String deleminatorgiven = input.substring(3,ClosingBracketIndex );
+        		String numbers=input.substring(ClosingBracketIndex+2);
+        		return numbers.split(Pattern.quote(deleminatorgiven));
+        	}
+        	
             Matcher x=Pattern.compile("//(.)\n(.*)").matcher(input);
             x.matches();
             String deleminatorgiven =x.group(1);
