@@ -24,21 +24,32 @@ public class StringCalculator {
    
     private static String[] manupulate(String input) {
    
-        if(input.startsWith("//")) {
+    	if(input.startsWith("//")) {
+        	input=input.substring(2);
         	
-        	if(input.startsWith("//["))
+        	if(input.charAt(0)=='[')
         	{
-        		int ClosingBracketIndex=input.indexOf(']');
-        		String deleminatorgiven = input.substring(3,ClosingBracketIndex );
-        		String numbers=input.substring(ClosingBracketIndex+2);
-        		return numbers.split(Pattern.quote(deleminatorgiven));
+        		int ClosingBracketIndex;
+        		String deleminatorgiven;
+        		int part=input.indexOf('\n');
+        		String numbers=input.substring(part+1);
+        		while(input.charAt(0)!='\n')
+        		{
+        			ClosingBracketIndex=input.indexOf(']');
+        			deleminatorgiven = input.substring(1,ClosingBracketIndex);
+        			numbers=numbers.replaceAll(deleminatorgiven , ",");
+        			input=input.substring(ClosingBracketIndex+1);
+        			
+        		}
+        		String[] nums=numbers.split(",");
+        		return nums;
         	}
         	
-            Matcher x=Pattern.compile("//(.)\n(.*)").matcher(input);
+            Matcher x=Pattern.compile("(.*)\n(.*)").matcher(input);
             x.matches();
             String deleminatorgiven =x.group(1);
             String numbers=x.group(2);
-            return numbers.split(deleminatorgiven);
+            return numbers.split(Pattern.quote(deleminatorgiven));
        }
        String[] nums= input.split(",|\n");
        return nums;
