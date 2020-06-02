@@ -41,6 +41,12 @@ public class StringCalculatorTest {
         assertEquals(calculator.add("1,2\n3,4\n10"), 20);
         assertEquals(calculator.add("1\n1\n2,4"),8);
     }
+    
+    @Test
+    public void customDeliminators() {
+        assertEquals(calculator.add("//,\n1,2,3,4"), 10);
+        assertEquals(calculator.add("//;\n1;2;3;4"), 10);
+    }
 
 
 }
