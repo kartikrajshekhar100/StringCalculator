@@ -1,5 +1,6 @@
 package StringCalculatorPackage;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,6 +11,11 @@ public class StringCalculator {
         } 
     	else  {
     		String[] nums= manupulate(input);  
+    		ArrayList<Integer> negative = getNegative(nums);
+            if(negative.size()>0)
+            {
+                 throw new RuntimeException("Negatives found: "+negative);
+            }
     		return getSummation(nums);
     	
         }
@@ -28,6 +34,20 @@ public class StringCalculator {
        String[] nums= input.split(",|\n");
        return nums;
     }
+    
+    private ArrayList<Integer> getNegative(String[] nums) {
+        ArrayList<Integer> negative = new ArrayList<Integer>();
+           
+            for (String x:nums) {
+               
+                if(Integer.parseInt(x)<0)
+                {
+                negative.add(Integer.parseInt(x));
+                }
+               
+            }
+            return negative;
+        }
    
    
     private int getSummation(String[] nums) {

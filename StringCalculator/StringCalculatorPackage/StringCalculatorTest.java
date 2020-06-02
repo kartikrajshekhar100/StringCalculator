@@ -47,6 +47,18 @@ public class StringCalculatorTest {
         assertEquals(calculator.add("//,\n1,2,3,4"), 10);
         assertEquals(calculator.add("//;\n1;2;3;4"), 10);
     }
+    
+    @Test
+    public void NegativException() {
+    	try
+    	{
+    		calculator.add("-51,-58,17,-10");
+    	}
+    	catch(RuntimeException ex)
+    	{
+    		assertEquals("Negatives found: [-51, -58, -10]", ex.getMessage() );
+    	}
+    }
 
 
 }
