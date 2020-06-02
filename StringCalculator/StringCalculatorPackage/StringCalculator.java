@@ -53,6 +53,7 @@ public class StringCalculator {
     private int getSummation(String[] nums) {
         int sum = 0;
         for (String currentNumber:nums) {
+        	if(Integer.parseInt(currentNumber)>1000)continue;
             sum += Integer.parseInt(currentNumber);
         }
         return sum;

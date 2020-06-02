@@ -59,6 +59,12 @@ public class StringCalculatorTest {
     		assertEquals("Negatives found: [-51, -58, -10]", ex.getMessage() );
     	}
     }
+    
+    @Test
+    public void NumberBiggerThanThousandIgnored() {
+        assertEquals(calculator.add("//,\n1,2000,3,4"), 8);
+        assertEquals(calculator.add("//;\n1;12;3000;4"), 17);
+    }
 
 
 }
