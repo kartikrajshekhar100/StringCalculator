@@ -17,5 +17,12 @@ public class StringCalculatorTest {
     public void EmptyStringReturningZero() {
         assertEquals(calculator.add(""), 0);
     }
+    
+    @Test
+    public void NumberStringReturningSameNumber() {
+        assertEquals(calculator.add("9"), 9);
+        assertEquals(calculator.add("7"), 7);
+    }
+
 
 }
