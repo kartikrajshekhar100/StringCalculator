@@ -29,6 +29,12 @@ public class StringCalculatorTest {
         assertEquals(calculator.add("11,22"), 33);
         assertEquals(calculator.add("100,15"), 115);
     }
+    
+    @Test
+    public void ManyNumbersSummedSeperatedByComma() {
+        assertEquals(calculator.add("1,2,3,4,5,6,7"), 28);
+        assertEquals(calculator.add("10,15,200"),225);
+    }
 
 
 }

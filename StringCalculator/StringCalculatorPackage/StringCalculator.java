@@ -7,10 +7,18 @@ public class StringCalculator {
         } 
     	else if (input.contains(",")) {
     		String[] nums=input.split(",");
-    		return Integer.parseInt(nums[0])+Integer.parseInt(nums[1]);
+    		return getSummation(nums);
     	}
     	else {
             return Integer.parseInt(input);
         }
+    }
+    
+    private int getSummation(String[] nums) {
+        int sum = 0;
+        for (String currentNumber:nums) {
+            sum += Integer.parseInt(currentNumber);
+        }
+        return sum;
     }
 }
