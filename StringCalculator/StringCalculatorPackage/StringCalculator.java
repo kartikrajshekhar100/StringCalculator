@@ -5,13 +5,16 @@ public class StringCalculator {
     	if (input.isEmpty()) {
             return 0;
         } 
-    	else if (input.contains(",")) {
-    		String[] nums=input.split(",");
+    	else  {
+    		String[] nums= manupulate(input);  
     		return getSummation(nums);
-    	}
-    	else {
-            return Integer.parseInt(input);
+    	
         }
+    }
+    
+    private static String[] manupulate(String input) {
+    	String[] nums= input.split(",|\n");
+    	return nums;
     }
     
     private int getSummation(String[] nums) {
